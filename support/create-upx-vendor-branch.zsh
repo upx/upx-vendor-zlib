@@ -37,7 +37,7 @@ devel_date=$(git show -s '--format=%ct' HEAD)
 # 1) copy devel files to $tmpdir
 tmpdir=$(mktemp -d -t upx-vendor-XXXXXX)
 [[ -d $tmpdir ]] || exit 1
-cp -ai *.c *.h $tmpdir
+cp -ai LIC*(N) *.c *.h $tmpdir
 # 2) create new orphan tmp-branch
 if git rev-parse -q --verify tmp-branch >/dev/null; then
     git branch -D tmp-branch
@@ -48,7 +48,7 @@ git rm -q -rf .
 cp -ai $tmpdir/* .
 # 4) remove unused files, create a LICENSE file
 rm compress.c uncompr.c
-head -n29 zlib.h > LICENSE
+[[ -f LICENSE ]] || head -n29 zlib.h > LICENSE
 # 5) cleanup files (whitespace)
 find . -type d -name '.git' -prune -o -type f -print0 | xargs -0r sed -i -e 's/[ \t]*$//'
 # 6) add files and commmit
