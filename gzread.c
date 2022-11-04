@@ -433,6 +433,7 @@ z_size_t ZEXPORT gzfread(buf, size, nitems, file)
     }
 
     /* read len or fewer bytes to buf, return the number of full items read */
+    if (size == 0) return 0;
     return len ? gz_read(state, buf, len) / size : 0;
 }
 

@@ -306,6 +306,7 @@ z_size_t ZEXPORT gzfwrite(buf, size, nitems, file)
     }
 
     /* write len bytes to buf, return the number of full items written */
+    if (size == 0) return 0;
     return len ? gz_write(state, buf, len) / size : 0;
 }
 
