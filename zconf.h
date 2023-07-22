@@ -236,8 +236,8 @@
 
 #if defined(ZLIB_CONST) && !defined(z_const)
 #  define z_const const
-#else
-#  define z_const
+#elif !defined(z_const)
+#  define z_const const
 #endif
 
 #ifdef Z_SOLO
