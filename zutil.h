@@ -137,7 +137,7 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
 #  endif
 #endif
 
-#if defined(MACOS)
+#if defined(MACOS) && !defined(__APPLE__)
 #  define OS_CODE  7
 #endif
 
